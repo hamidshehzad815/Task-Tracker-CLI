@@ -1,64 +1,50 @@
-import ora from "ora";
 import readFile from "../db/readFile.js";
 import writeFile from "../db/writeFile.js";
 
 function date() {
   const currentDate = new Date();
   const options = { year: "numeric", month: "2-digit", day: "2-digit" };
-  const formattedDate = currentDate.toLocaleDateString("en-US", options);
-  return formattedDate;
+  return currentDate.toLocaleDateString("en-US", options);
 }
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default async function updateTask(id, description) {
-  // Spinner for Reading Data from File
-  let spinner1 = ora({
-    text: "🔍 Opening file and reading tasks...",
-    spinner: {
-      interval: 150,
-      frames: ["📂", "📄", "📖", "🔍", "📑"],
-    },
-    color: "blue",
-  }).start();
-
+  // Log when opening the file and reading tasks
+  console.log("🔍 Opening file and reading tasks...");
   await delay(500);
   const fileData = await readFile();
-  spinner1.succeed("✅ File read successfully!");
+  console.log("✅ File read successfully!");
 
-  // Spinner for Updating Task
-  let spinner3 = ora({
-    text: "🛠️ Updating the task...",
-    spinner: {
-      interval: 100,
-      frames: ["✏️", "📝", "🔄"],
-    },
-    color: "yellow",
-  }).start();
-
+  // Log when updating the task
+  console.log("🛠️ Updating the task...");
   await delay(500);
+
+  let taskFound = false; // Flag to check if the task was found
   fileData.forEach((task) => {
     if (task["id"] === parseInt(id)) {
       task.description = description;
       task.updatedAt = date();
+      taskFound = true; // Set the flag if the task is found
     }
   });
-  spinner3.succeed("✅ Task updated successfully!");
 
-  // Spinner for Writing Data to File
-  const spinner2 = ora({
-    text: "💾 Saving updated tasks to the file...",
-    spinner: {
-      interval: 150,
-      frames: ["💾", "📀", "💿", "🔒"],
-    },
-    color: "magenta",
-  }).start();
+  if (taskFound) {
+    console.log("✅ Task updated successfully!");
+  } else {
+    console.log("⚠️ Task not found!");
+  }
 
+  // Log when saving updated tasks to the file
+  console.log("💾 Saving updated tasks to the file...");
   await delay(500);
-  writeFile(fileData);
-  spinner2.succeed("✅ Data saved to file!");
+  await writeFile(fileData); // Write the updated data back to the file
+  console.log("✅ Data saved to file!");
 
   // Final confirmation message
-  spinner2.succeed(`Task successfully updated! (ID: ${id})`);
+  if (taskFound) {
+    console.log(`Task successfully updated! (ID: ${id})`);
+  } else {
+    console.log(`No task found with ID: ${id}. Update failed.`);
+  }
 }

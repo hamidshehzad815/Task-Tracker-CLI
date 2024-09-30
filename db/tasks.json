@@ -1,50 +1,64 @@
 [
   {
-    "id": 2,
-    "description": "Walk the dog and visit the vet",
-    "status": "in-progress",
+    "id": 20604409,
+    "description": "task-cli",
+    "status": "todo",
     "createdAt": "09/30/2024",
-    "updatedAt": "09/30/2024"
+    "updatedAt": null
   },
   {
-    "id": 3,
-    "description": "Pay electricity and water bills",
-    "status": "in-progress",
+    "id": 72999282,
+    "description": "Pay electricity bill",
+    "status": "todo",
     "createdAt": "09/30/2024",
-    "updatedAt": "09/30/2024"
+    "updatedAt": null
   },
   {
-    "id": 4,
-    "description": "Prepare dinner and clean the kitchen",
-    "status": "in-progress",
+    "id": 20172482,
+    "description": "Prepare dinner",
+    "status": "todo",
     "createdAt": "09/30/2024",
-    "updatedAt": "09/30/2024"
+    "updatedAt": null
   },
   {
-    "id": 6,
-    "description": "Schedule dentist and eye checkup appointments",
+    "id": 32500363,
+    "description": "Call the bank",
+    "status": "todo",
+    "createdAt": "09/30/2024",
+    "updatedAt": null
+  },
+  {
+    "id": 25230530,
+    "description": "Schedule dentist appointment",
+    "status": "todo",
+    "createdAt": "09/30/2024",
+    "updatedAt": null
+  },
+  {
+    "id": 93831066,
+    "description": "Water the plants",
+    "status": "todo",
+    "createdAt": "09/30/2024",
+    "updatedAt": null
+  },
+  {
+    "id": 10903559,
+    "description": "Finish the project report",
     "status": "done",
     "createdAt": "09/30/2024",
     "updatedAt": "09/30/2024"
   },
   {
-    "id": 8,
+    "id": 77022385,
     "description": "Buy a birthday gift",
-    "status": "todo",
+    "status": "in-progress",
     "createdAt": "09/30/2024",
-    "updatedAt": null
+    "updatedAt": "09/30/2024"
   },
   {
-    "id": 9,
-    "description": "Clean the garage",
+    "id": 602921,
+    "description": "Clean garage",
     "status": "todo",
-    "createdAt": "09/30/2024",
-    "updatedAt": null
-  },
-  {
-    "id": 10,
-    "description": "Send email to the client",
-    "status": "done",
     "createdAt": "09/30/2024",
     "updatedAt": "09/30/2024"
   }

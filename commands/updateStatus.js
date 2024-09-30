@@ -1,4 +1,3 @@
-import ora from "ora";
 import readFile from "../db/readFile.js";
 import writeFile from "../db/writeFile.js";
 
@@ -13,30 +12,14 @@ function date() {
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default async function updateStatus(id, status) {
-  // Spinner for reading data from the file
-  const spinner1 = ora({
-    text: "📂 Reading data from the file...",
-    spinner: {
-      interval: 150,
-      frames: ["📂", "📄", "📃", "📑", "🔍"],
-    },
-    color: "yellow",
-  }).start();
-
+  // Log when reading data from the file
+  console.log("📂 Reading data from the file...");
   await delay(500); // Simulate delay
   const fileData = await readFile();
-  spinner1.succeed("✅ Successfully read data from the file!");
+  console.log("✅ Successfully read data from the file!");
 
-  // Spinner for updating status
-  const spinner3 = ora({
-    text: "🔄 Updating status...",
-    spinner: {
-      interval: 100,
-      frames: ["🔄", "🔁", "🔃", "🔄"],
-    },
-    color: "cyan",
-  }).start();
-
+  // Log when updating status
+  console.log("🔄 Updating status...");
   await delay(500); // Simulate delay
 
   // Check if task exists and update status
@@ -48,24 +31,16 @@ export default async function updateStatus(id, status) {
         task.updatedAt = date();
       }
     });
-    spinner3.succeed("✅ Status updated successfully!");
+    console.log("✅ Status updated successfully!");
   } else {
-    spinner3.fail("⚠️ Task not found!");
+    console.log("⚠️ Task not found!");
   }
 
-  // Spinner for writing data back to the file
-  const spinner2 = ora({
-    text: "💾 Writing updated tasks to the file...",
-    spinner: {
-      interval: 150,
-      frames: ["💾", "📀", "💿", "🔒"],
-    },
-    color: "magenta",
-  }).start();
-
+  // Log when writing data back to the file
+  console.log("💾 Writing updated tasks to the file...");
   await delay(500); // Simulate delay
   await writeFile(fileData); // Write the updated data back to the file
-  spinner2.succeed("✅ Tasks saved successfully!");
+  console.log("✅ Tasks saved successfully!");
 
   // Final confirmation message
   if (taskExists) {

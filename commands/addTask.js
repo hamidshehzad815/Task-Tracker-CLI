@@ -1,4 +1,3 @@
-import ora from "ora";
 import createFile from "../db/fileCreater.js";
 import readFile from "../db/readFile.js";
 import writeFile from "../db/writeFile.js";
@@ -15,32 +14,17 @@ export default async function addTask(description) {
   // Create the tasks file if it doesn't exist
   await createFile();
 
-  // Spinner for reading data from the file
-  let spinner1 = ora({
-    text: "📂 Opening the file to read existing tasks...",
-    spinner: {
-      interval: 150,
-      frames: ["📂", "📄", "📃", "📑", "📝", "📖", "🔍"],
-    },
-    color: "yellow",
-  }).start();
-
+  // Log when opening the file to read existing tasks
+  console.log("📂 Opening the file to read existing tasks...");
   await delay(1000); // Simulate a delay for demonstration
   const fileData = await readFile();
-  spinner1.succeed("✅ Successfully read data from the file!");
+  console.log("✅ Successfully read data from the file!");
 
-  // Spinner for adding the new task
-  let spinner3 = ora({
-    text: "📝 Adding the new task...",
-    spinner: {
-      interval: 100,
-      frames: ["📝", "✏️", "🖊️", "📌"],
-    },
-    color: "green",
-  }).start();
-
+  // Log when adding the new task
+  console.log("📝 Adding the new task...");
   await delay(1000); // Simulate a delay for demonstration
-  const id = fileData.length + 1; // Generate a new ID
+
+  const id = Math.floor(Math.random() * 100000000) + 1; // Generate a new ID
   const status = "todo"; // Set the initial status
   const createdAt = date(); // Get the current date
   const updatedAt = null; // Initially, no update time
@@ -53,22 +37,14 @@ export default async function addTask(description) {
   };
 
   fileData.push(task); // Add the new task to the array
-  spinner3.succeed("✅ Task added to the list!");
+  console.log("✅ Task added to the list!");
 
-  // Spinner for writing data back to the file
-  const spinner2 = ora({
-    text: "💾 Saving updated tasks to the file...",
-    spinner: {
-      interval: 150,
-      frames: ["💾", "📀", "💿", "🔒"],
-    },
-    color: "magenta",
-  }).start();
-
+  // Log when saving updated tasks to the file
+  console.log("💾 Saving updated tasks to the file...");
   await delay(1000); // Simulate a delay for demonstration
   await writeFile(fileData); // Write the updated data back to the file
-  spinner2.succeed("✅ Tasks saved successfully!");
+  console.log("✅ Tasks saved successfully!");
 
   // Final confirmation message
-  spinner2.succeed(`Task added successfully (ID: ${id})`);
+  console.log(`Task added successfully (ID: ${id})`);
 }

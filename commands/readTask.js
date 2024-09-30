@@ -1,4 +1,3 @@
-import ora from "ora";
 import readFile from "../db/readFile.js";
 import writeFile from "../db/writeFile.js";
 
@@ -8,50 +7,30 @@ export default async function readTask(status) {
   let all = false;
   if (!status) all = true;
 
-  // Creative Spinner for Reading Data from File
-  let spinner1 = ora({
-    text: "Opening and reading file...",
-    spinner: {
-      interval: 150,
-      frames: ["📂", "📄", "📑", "🔍", "📖"],
-    },
-    color: "blue",
-  }).start();
-
-  await delay(1500);
+  // Log when starting to read the file
+  console.log("📂 Opening and reading the file...");
+  await delay(1500); // Simulate delay
   const fileData = await readFile();
-  spinner1.succeed("File read successfully!");
+  console.log("✅ File read successfully!");
 
-  // Creative Spinner for Listing Tasks
-  let spinner3 = ora({
-    text: `Listing ${status ? status : "all"} tasks...`,
-    spinner: {
-      interval: 120,
-      frames: ["📝", "📋", "✅", "📃", "📄"],
-    },
-    color: "green",
-  }).start();
+  // Log the task listing status
+  console.log(`📋 Listing ${status ? status : "all"} tasks...`);
+  await delay(1500); // Simulate delay
 
-  await delay(1500);
+  // Display the tasks based on the provided status
   fileData.forEach((task) => {
-    if (all) console.log(task);
-    else if (task["status"] === status) {
+    if (all) {
+      console.log(task);
+    } else if (task["status"] === status) {
       console.log(task);
     }
   });
-  spinner3.succeed(`${status ? status : "All"} tasks listed!`);
 
-  // Creative Spinner for Writing Data to File
-  const spinner2 = ora({
-    text: "Saving data to file...",
-    spinner: {
-      interval: 100,
-      frames: ["💾", "📀", "💿", "🖋️", "✍️", "💻"],
-    },
-    color: "magenta",
-  }).start();
+  console.log(`✅ ${status ? status : "All"} tasks listed!`);
 
-  await delay(1500);
-  writeFile(fileData);
-  spinner2.succeed("Data saved to file!");
+  // Log when saving data to the file
+  console.log("💾 Saving data to file...");
+  await delay(1500); // Simulate delay
+  await writeFile(fileData); // Ensure you await the writeFile operation
+  console.log("✅ Data saved to file!");
 }
