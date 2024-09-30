@@ -21,7 +21,7 @@ Make sure you have the following installed:
 
 1. Clone the repository to your local machine:
 
-   git clone https://github.com/hamidshehzad815/Task-Tracker-CLI.git
+   git clone https://github.com/hamidshehzad815/Task-Tracker-CLI
    
    cd todo-app
 
