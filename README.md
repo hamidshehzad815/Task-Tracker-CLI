@@ -30,29 +30,29 @@ You can run the application using Node.js. Below are the available commands:
 
 ### Create a new todo
 
-task-cli add <description>
+task-cli add "description"
 
 ### Update a task
 
-task-cli update <id> <description>
+task-cli update id description
 
 ### Mark a task as in-progress
 
-task-cli mark-in-progress <id>
+task-cli mark-in-progress id
 
 ### Mark a task as done
 
-task-cli mark-done <id>
+task-cli mark-done id
 
 ### Delete a task
 
-task-cli delete <id>
+task-cli delete id
 
 ### List tasks
 
 task-cli list [status]
 
-**Note:** Replace <id> with the task ID and <description> with the task details.
+**Note:** Replace id with the task ID and description with the task details.
 
 ## Example
 
