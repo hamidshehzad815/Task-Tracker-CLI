@@ -1,0 +1,51 @@
+[
+  {
+    "id": 2,
+    "description": "Walk the dog and visit the vet",
+    "status": "in-progress",
+    "createdAt": "09/30/2024",
+    "updatedAt": "09/30/2024"
+  },
+  {
+    "id": 3,
+    "description": "Pay electricity and water bills",
+    "status": "in-progress",
+    "createdAt": "09/30/2024",
+    "updatedAt": "09/30/2024"
+  },
+  {
+    "id": 4,
+    "description": "Prepare dinner and clean the kitchen",
+    "status": "in-progress",
+    "createdAt": "09/30/2024",
+    "updatedAt": "09/30/2024"
+  },
+  {
+    "id": 6,
+    "description": "Schedule dentist and eye checkup appointments",
+    "status": "done",
+    "createdAt": "09/30/2024",
+    "updatedAt": "09/30/2024"
+  },
+  {
+    "id": 8,
+    "description": "Buy a birthday gift",
+    "status": "todo",
+    "createdAt": "09/30/2024",
+    "updatedAt": null
+  },
+  {
+    "id": 9,
+    "description": "Clean the garage",
+    "status": "todo",
+    "createdAt": "09/30/2024",
+    "updatedAt": null
+  },
+  {
+    "id": 10,
+    "description": "Send email to the client",
+    "status": "done",
+    "createdAt": "09/30/2024",
+    "updatedAt": "09/30/2024"
+  }
+]
